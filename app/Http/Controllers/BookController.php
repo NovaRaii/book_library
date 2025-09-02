@@ -11,7 +11,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Author::all();
+        return view('books.index', compact('books'));
     }
 
     /**
@@ -19,7 +20,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -27,7 +28,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book  = new Book();
+        $book->name = $request->input('name');
+        $book->price = $request->input('price');
+        $book->id = $request->input('id'); 
+        $book->edition = $request->input('edition'); 
+        $book->publication_date = $request->input('publication_date'); 
+        $book->category = $request->input('category'); 
+        $book->save();
+        return redirect()->route('books.index')->with('success', "{$book->name} sikeresen létrehozva");
     }
 
     /**
@@ -35,7 +44,8 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = Book::find($id);
+        return view('books.show', compact('book'));
     }
 
     /**
@@ -43,7 +53,8 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::find($id);
+        return view('books.edit', compact('book'));
     }
 
     /**
@@ -51,7 +62,15 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $book  = Book::find($id);
+        $book->name = $request->input('name');
+        $book->price = $request->input('price');
+        $book->id = $request->input('id'); 
+        $book->edition = $request->input('edition'); 
+        $book->publication_date = $request->input('publication_date'); 
+        $book->category = $request->input('category'); 
+        $book->save();
+        return redirect()->route('books.index')->with('success', "{$book->name} sikeresen módosítva");
     }
 
     /**
@@ -59,6 +78,7 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $book  = Book::find($id);
+        $book->delete();
+        return redirect()->route('books.index')->with('success', "Sikeresen törölve");    }
 }
