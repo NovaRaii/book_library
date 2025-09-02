@@ -11,7 +11,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::all();
+        return view('authors.index', compact('authors'));
     }
 
     /**
@@ -19,7 +20,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.create');
     }
 
     /**
@@ -27,7 +28,13 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $author  = new Author();
+        $author->name = $request->input('name');
+        $author->nationality = $request->input('nationality'); 
+        $author->age = $request->input('age'); 
+        $author->gender = $request->input('gender'); 
+        $author->save();
+        return redirect()->route('authors.index')->with('success', "{$author->name} sikeresen létrehozva");
     }
 
     /**
@@ -35,7 +42,8 @@ class AuthorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $author = Author::find($id);
+        return view('authors.show', compact('author'));
     }
 
     /**
@@ -43,7 +51,8 @@ class AuthorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $author = Author::find($id);
+        return view('authors.edit', compact('author'));
     }
 
     /**
@@ -51,7 +60,13 @@ class AuthorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $author  = Author::find($id);
+        $author->name = $request->input('name');
+        $author->nationality = $request->input('nationality'); 
+        $author->age = $request->input('age'); 
+        $author->gender = $request->input('gender'); 
+        $author->save();
+        return redirect()->route('authors.index')->with('success', "{$author->name} sikeresen módosítva");
     }
 
     /**
@@ -59,6 +74,8 @@ class AuthorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $author  = Author::find($id);
+        $author->delete();
+        return redirect()->route('authors.index')->with('success', "Sikeresen törölve");
     }
 }
