@@ -1,7 +1,7 @@
 @extends('layout')
  
 @section('content')
-<h1>Tantárgyak</h1>
+<h1>Szerzők</h1>
 <div>
     <!-- Happiness is not something readymade. It comes from your own actions. - Dalai Lama -->
  
@@ -11,7 +11,12 @@
         @foreach($authors as $author)
             <li class="row {{ $loop->iteration % 2 == 0 ? 'even' : 'odd' }}">
                 <div class="col id">{{ $author->id }}</div>
-                <div class="col">{{$author->name}}</div>
+                <div class="col">
+    <a href="{{ route('authors.show', $author->id) }}">
+        {{ $author->name }}
+    </a>
+</div>
+
                 <div class="right">
                     <div class="col">
 {{--                        <a href="{{ route('authors.show', $author->id) }}"><button><i class="fa fa-binoculars" title="Mutat"></i></button></a></div>--}}

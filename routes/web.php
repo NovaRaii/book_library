@@ -20,11 +20,11 @@ Route::delete('/authors/{author}', [AuthorController::class, 'destroy'])->name('
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
 Route::get('/authors/{author}', [AuthorController::class, 'show'])->name('authors.show');
  
-Route::post('/book', [BookController::class, 'store'])->name('book.store');
-Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
-Route::patch('/book/{book}', [BookController::class, 'update'])->name('book.update');
-Route::get('/book/{book}/edit', [BookController::class, 'edit'])->name('book.edit');
-Route::delete('/book/{book}', [BookController::class, 'destroy'])->name('book.destroy');
-Route::get('/book', [BookController::class, 'index'])->name('book.index');
-Route::get('/book/{book}', [BookController::class, 'show'])->name('book.show');
+Route::post('/books', [BookController::class, 'store'])->name('books.store');
+Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+Route::patch('/books/{book}', [BookController::class, 'update'])->name('books.update');
+Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
+Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
  
