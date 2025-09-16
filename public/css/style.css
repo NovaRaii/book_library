@@ -1,0 +1,393 @@
+/* Bookstore CSS - Beautiful styling for Laravel Blade templates */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.6;
+  color: #2c1810;
+  background: linear-gradient(135deg, #f7f3f0 0%, #ede4db 100%);
+  min-height: 100vh;
+}
+
+/* Header & Navigation */
+header {
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+}
+
+header .row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+nav button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+nav button a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Main Content */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #8b4513;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.1);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+form input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #d4c4b0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+form select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #d4c4b0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+form select:focus {
+  outline: none;
+  border-color: #8b4513;
+}
+
+/* Button Styling */
+button {
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Add New Button */
+a[title="Új"] {
+  display: inline-block;
+  background: linear-gradient(135deg, #228b22 0%, #32cd32 100%);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 20px rgba(34, 139, 34, 0.2);
+  transition: all 0.3s ease;
+}
+
+a[title="Új"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(34, 139, 34, 0.3);
+}
+
+/* List Container */
+ul {
+  list-style: none;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(139, 69, 19, 0.1);
+}
+
+/* Row Styling */
+.row {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row.even {
+  background: #fafaf9;
+}
+
+.row.odd {
+  background: white;
+}
+
+.row:hover {
+  background: #f7f3f0;
+  transform: translateX(8px);
+  box-shadow: 8px 0 20px rgba(139, 69, 19, 0.1);
+}
+
+/* Column Styling */
+.col {
+  padding: 0 1rem;
+}
+
+.col.id {
+  font-weight: bold;
+  color: #8b4513;
+  font-size: 1.1rem;
+  min-width: 60px;
+}
+
+.col.cover {
+  min-width: 100px;
+}
+
+.col.cover img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.col.cover img:hover {
+  transform: scale(1.05);
+}
+
+.col.cover span {
+  color: #999;
+  font-style: italic;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 2px dashed #ddd;
+}
+
+/* Book/Author Links */
+.col a {
+  color: #8b4513;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.col a:hover {
+  color: #a0522d;
+  text-decoration: underline;
+}
+
+/* Right Side Actions */
+.right {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.right button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  min-width: auto;
+}
+
+/* Edit Button */
+.right a button, .right button[type="submit"]:not([name="btn-del-subject"]) {
+  background: linear-gradient(135deg, #4682b4 0%, #5f9ea0 100%);
+}
+
+/* Delete Button */
+button[name="btn-del-subject"] {
+  background: linear-gradient(135deg, #dc143c 0%, #ff6347 100%);
+}
+
+button[name="btn-del-subject"]:hover {
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.3);
+}
+
+/* Pagination */
+.paginator, .mt-3 {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+footer p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+  
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  form input[type="text"] {
+    min-width: auto;
+  }
+  
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .right {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+  
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Focus States for Accessibility */
+button:focus,
+input:focus,
+select:focus,
+a:focus {
+  outline: 3px solid rgba(139, 69, 19, 0.3);
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Success/Error Messages */
+.success {
+  background: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #28a745;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #dc3545;
+}
+
+/* Hide previous/next arrows */
+.pagination li:first-child,
+.pagination li:last-child {
+    display: none;
+}
+
+/* Optional: make numeric links nicer */
+.pagination li {
+    display: inline-block;
+    margin: 0 4px;
+}
+
+.pagination li a,
+.pagination li span {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination li.active span {
+    background-color: #4f46e5; /* Tailwind indigo-600 */
+    color: white;
+    border-color: #4f46e5;
+}
+

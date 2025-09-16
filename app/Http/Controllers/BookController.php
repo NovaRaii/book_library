@@ -33,7 +33,7 @@ class BookController extends Controller
         $query->where('category', $category);
     }
 
-    $books = $query->paginate(10);
+    $books = $query->simplePaginate(10);
 
     return view('books.index', compact('books', 'categories', 'category'));
 }
@@ -112,15 +112,15 @@ class BookController extends Controller
     $book->author_id = $request->input('author_id');
 
     if ($request->hasFile('cover')) {
-        $filename = $book->id . '.jpg';
+        $filename = 'book'.$book->id . '.jpg';
         $request->file('cover')->move(public_path('covers'), $filename);
-        $book->cover = $filename; // optional if you save filename in DB
+        $book->cover = $filename; 
     }
 
     $book->save();
 
     return redirect()->route('books.index')->with('success', "{$book->name} sikeresen módosítva");
-}
+}   
 
 
     /**

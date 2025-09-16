@@ -25,12 +25,13 @@
             <li class="row {{ $loop->iteration % 2 == 0 ? 'even' : 'odd' }}">
                 <div class="col id">{{ $book->id }}</div>
                 <div class="col cover">
-                    @if($book->cover)
-                        <img src="{{ asset($book->cover) }}" alt="{{ $book->name }}" style="height:60px;">
-                    @else
-                        <span>No cover</span>
-                    @endif
-                </div>
+    @if($book->cover)
+        <img src="{{ asset('covers/' . $book->cover) }}" alt="{{ $book->name }}" style="height:60px;">
+    @else
+        <span>No cover</span>
+    @endif
+</div>
+
                 
                 <div class="col">
                     <a href="{{ route('books.show', $book->id) }}">
@@ -43,7 +44,6 @@
                         <a href="{{ route('books.edit', $book->id) }}"><button>Módosít</button></a>
                     </div>
                     <div class="col">
-                        <form action="{{ route('books.destroy', $book->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="btn-del-subject">Töröl</button>
@@ -57,5 +57,13 @@
     <div class="mt-3">
     {{ $books->appends(request()->query())->links() }}
 </div>
+
+<style>
+/* Hide the Previous and Next arrows */
+.pagination .page-item:first-child,
+.pagination .page-item:last-child {
+    display: none;
+}
+</style>
 </div>
 @endsection
