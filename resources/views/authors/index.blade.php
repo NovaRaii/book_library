@@ -28,11 +28,13 @@
                             <a href="{{ route('authors.edit', $author->id) }}"><button>Módosít</button></a>
                         </div>
                         <div class="col">
-                            <form action="{{ route('authors.destroy', $author->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" name="btn-del-subject">Töröl</button>
-                            </form>
+                               <form action="{{ route('authors.destroy', $author->id) }}" method="POST" 
+      onsubmit="return confirm('Biztos törlöd?');" 
+      style="display:inline; margin:0; padding:0;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn">Töröl</button>
+</form>
                         </div>
                     
                 </div>

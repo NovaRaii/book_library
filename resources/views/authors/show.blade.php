@@ -15,6 +15,9 @@
             <div class="mt-3">
                 <a href="{{ route('authors.index') }}" class="btn btn-secondary">Vissza a listához</a>
         </div>
+            <div class="mt-3">
+                <a href=" {{ route('books.index', ['search' => $author->name]) }} " class="btn btn-secondary">Könyvei</a>
+            </div>
     </div>
 </div>
 @endsection

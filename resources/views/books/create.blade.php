@@ -1,10 +1,4 @@
 @extends('layout')
-
-	<main>
-        	@yield('content')
-    	</main>
-
-	
 @section('content')
 <h1>Új Könyv</h1>
 <div>
