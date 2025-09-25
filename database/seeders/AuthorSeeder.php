@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Author;
 
 class AuthorSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class AuthorSeeder extends Seeder
      */
     public function run(): void
     {
-       DB::table('author')->insert([
+       $authors = [
             ['id' => 1, 'name' => 'Emma Clarke', 'age' => 42, 'gender' => 'female', 'nationality' => 'British'],
             ['id' => 2, 'name' => 'John Miller', 'age' => 55, 'gender' => 'male', 'nationality' => 'American'],
             ['id' => 3, 'name' => 'Sofia Martinez', 'age' => 38, 'gender' => 'female', 'nationality' => 'Spanish'],
@@ -24,6 +25,15 @@ class AuthorSeeder extends Seeder
             ['id' => 8, 'name' => 'Chen Wei', 'age' => 45, 'gender' => 'female', 'nationality' => 'Chinese'],
             ['id' => 9, 'name' => 'Carlos Mendoza', 'age' => 59, 'gender' => 'male', 'nationality' => 'Mexican'],
             ['id' => 10, 'name' => 'Amira Hassan', 'age' => 40, 'gender' => 'female', 'nationality' => 'Egyptian'],
-        ]);
+        ];
+
+        foreach($authors as $item){
+            $author = new Author();
+            $author->name = $item['name'];
+            $author->age = $item['age'];
+            $author->gender = $item['gender'];
+            $author->nationality = $item['nationality'];
+            $author->save();
+        }
     }
 }

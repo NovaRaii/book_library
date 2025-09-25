@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {   
             $table->id();
             $table->string('name')->index();
-            $table->string('category');
+            $table->unsignedBigInteger('category_id');
             $table->integer('price');
             $table->date('publication_date');
             $table->integer('edition');
@@ -26,7 +26,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     */
+     */ 
     public function down(): void
     {
         Schema::dropIfExists('books');

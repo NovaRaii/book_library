@@ -25,6 +25,7 @@
             <nav>
                     <button><a href="{{ route('authors.index') }}">Szerzők</a></button>
                     <button><a href="{{ route('books.index') }}">Könyvek</a></button>
+                    <button><a href="{{ route('categories.index') }}">Kategóriák</a></button>
                     
             </nav>
         </div>

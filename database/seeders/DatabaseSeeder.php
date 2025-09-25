@@ -12,10 +12,13 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-         $this->call([
-            BookSeeder::class,
-            AuthorSeeder::class,
-        ]);
-    }
+{
+    $this->call([
+        AuthorSeeder::class,
+        CategorySeeder::class,
+    ]);
+
+    $this->call(BookSeeder::class); // mindig utolsó
+}
+
 }

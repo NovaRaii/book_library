@@ -2,6 +2,7 @@
  
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
  
 Route::get('/', function () {
@@ -28,3 +29,10 @@ Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
  
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::patch('/categories/{author}', [CategoryController::class, 'update'])->name('categories.update');
+Route::get('/categories/{author}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::delete('/categories/{author}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{author}', [CategoryController::class, 'show'])->name('categories.show');

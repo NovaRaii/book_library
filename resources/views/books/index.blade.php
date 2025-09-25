@@ -6,11 +6,12 @@
 <form method="GET" action="{{ route('books.index') }}">
     <input type="text" name="search" value="{{ request('search') }}" placeholder="Keresés...">
     <button type="submit">Keresés</button>
+
     <select name="category" onchange="this.form.submit()">
         <option value="">-- Összes kategória --</option>
         @foreach($categories as $cat)
             <option value="{{ $cat }}" {{ $cat == request('category') ? 'selected' : '' }}>
-                {{ $cat }}
+                {{ \App\Models\Category::find($cat)->name ?? 'Ismeretlen' }}
             </option>
         @endforeach
     </select>
@@ -19,56 +20,60 @@
 <div>
     <a href="{{ route('books.create') }}" title="Új">Új hozzáadása</a>
 
-    <ul>
-        <table>
-        @foreach($books as $book)
-            <li class="row {{ $loop->iteration % 2 == 0 ? 'even' : 'odd' }}">
-                <div class="col id">{{ $book->id }}</div>
-                <div class="col cover">
-    @if($book->cover)
-        <img src="{{ asset('covers/' . $book->cover) }}" alt="{{ $book->name }}" style="height:60px;">
-    @else
-        <span>No cover</span>
-    @endif
-</div>
-
-                
-                <div class="col">
-                    <a href="{{ route('books.show', $book->id) }}">
-                        {{ $book->author->name ?? 'Ismeretlen szerző' }} – {{ $book->name }}
-                    </a>
-                </div>
-                
-                <div class="right">
-                    <div class="col">
+    <table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Borító</th>
+                <th>Könyv & Szerző</th>
+                <th>Műveletek</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($books as $book)
+                <tr class="{{ $loop->even ? 'even' : 'odd' }}">
+                    <td>{{ $book->id }}</td>
+                    <td>
+                        @if($book->cover)
+                            <img src="{{ asset('covers/' . $book->cover) }}" alt="{{ $book->name }}" style="height:60px;">
+                        @else
+                            <span>No cover</span>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('books.show', $book->id) }}">
+                            {{ $book->author->name ?? 'Ismeretlen szerző' }} – {{ $book->name }}
+                        </a>
+                        <br>
+                        <small>Kategória: {{ $book->category->name ?? 'Ismeretlen' }}</small>
+                    </td>
+                    <td>
                         <a href="{{ route('books.edit', $book->id) }}"><button>Módosít</button></a>
-                    </div>
-                    <div class="col">
-   <form action="{{ route('books.destroy', $book->id) }}" method="POST" 
-      onsubmit="return confirm('Biztos törlöd?');" 
-      style="display:inline; margin:0; padding:0;">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn">Töröl</button>
-</form>
+                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" 
+                              onsubmit="return confirm('Biztos törlöd?');" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Töröl</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-</div>
-                    </div>
-                </div>
-            </li>
-        @endforeach
-        </table>
-    </ul>
     <div class="mt-3">
-    {{ $books->appends(request()->query())->links() }}
+        {{ $books->appends(request()->query())->links() }}
+    </div>
 </div>
 
 <style>
-/* Hide the Previous and Next arrows */
-.pagination .page-item:first-child,
-.pagination .page-item:last-child {
-    display: none;
-}
+    .even { background-color: #f9f9f9; }
+    .odd { background-color: #ffffff; }
+
+    /* Hide the Previous and Next arrows */
+    .pagination .page-item:first-child,
+    .pagination .page-item:last-child {
+        display: none;
+    }
 </style>
-</div>
 @endsection
